@@ -64,9 +64,9 @@ pipeline {
                 echo 'Setting up Python virtual environment'
                 echo '=============================================='
 
-                bat 'py --version'
+                bat 'python --version'
 
-                bat 'py -m venv .venv'
+                bat 'python -m venv .venv'
 
                 bat '.venv\\Scripts\\python.exe -m pip install --upgrade pip'
 
