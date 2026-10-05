@@ -93,22 +93,23 @@ pipeline {
         // 5. UNIT TESTS
         // ============================================================
         stage('Unit Tests') {
-            steps {
-                echo '=============================================='
-                echo 'Running Python unit tests'
-                echo '=============================================='
+    steps {
+        echo '=============================================='
+        echo 'Running Python unit tests'
+        echo '=============================================='
 
-                bat '''
-                    .venv\\Scripts\\pytest.exe -q --junitxml=test-results.xml
-                '''
-            }
+        bat '''
+            set PYTHONPATH=%WORKSPACE%
+            .venv\\Scripts\\python.exe -m pytest -q --junitxml=test-results.xml
+        '''
+    }
 
-            post {
-                always {
-                    junit 'test-results.xml'
-                }
-            }
+    post {
+        always {
+            junit 'test-results.xml'
         }
+    }
+}
 
 
         // ============================================================
