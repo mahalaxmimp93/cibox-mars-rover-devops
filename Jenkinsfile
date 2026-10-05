@@ -128,14 +128,15 @@ pipeline {
                     withSonarQubeEnv('sonarqube') {
 
                         bat """
-                            "${scannerHome}\\bin\\sonar-scanner.bat" ^
-                            -Dsonar.projectKey=cibox-rover ^
-                            -Dsonar.projectName="CIBOX Mars Rover" ^
-                            -Dsonar.sources=. ^
-                            -Dsonar.tests=tests ^
-                            -Dsonar.python.version=3.12 ^
-                            -Dsonar.exclusions=.venv/**,**/__pycache__/**,.pytest_cache/**,test-results.xml
-                        """
+    "${scannerHome}\\bin\\sonar-scanner.bat" ^
+    -Dsonar.projectKey=cibox-rover ^
+    -Dsonar.projectName="CIBOX Mars Rover" ^
+    -Dsonar.sources=rover.py ^
+    -Dsonar.tests=tests ^
+    -Dsonar.test.inclusions=tests/**/*.py ^
+    -Dsonar.python.version=3.12 ^
+    -Dsonar.exclusions=.venv/**,**/__pycache__/**,.pytest_cache/**,test-results.xml
+"""
                     }
                 }
             }
