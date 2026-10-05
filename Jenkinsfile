@@ -210,11 +210,11 @@ pipeline {
                 echo 'Validating expected Mars Rover output...'
 
                 bat '''
-                    findstr /x /c:"1 3 N" container-output.txt
+                    findstr /c:"1 3 N" container-output.txt
                 '''
 
                 bat '''
-                    findstr /x /c:"5 1 E" container-output.txt
+                    findstr /c:"5 1 E" container-output.txt
                 '''
             }
         }
